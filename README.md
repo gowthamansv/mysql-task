@@ -1,11 +1,11 @@
-# mysql-task
+# Mysql-Task
 
 ## create a database namme ecommerce
 ```SQL
 CREATE DATABASE ecommerce;
 ```
 
-# create a table products
+### create a table products
 ```SQL
 create table customers ( 
     id INT AUTO_INCREMENT, 
@@ -16,7 +16,7 @@ create table customers (
 );
 ```
 
-# INSERT a sample data to the table products
+### INSERT a sample data to the table products
 
 ```SQL
 INSERT INTO customers (name, email, address) VALUES
@@ -62,7 +62,7 @@ INSERT INTO customers (name, email, address) VALUES
 ```
 
 
-# creating a second table orders
+### creating a second table orders
 ```SQL
 CREATE TABLE orders (
     id INT AUTO_INCREMENT,
@@ -74,7 +74,7 @@ CREATE TABLE orders (
 );
 ```
 
-# INSERT a sample data to the orders table 
+### INSERT a sample data to the orders table 
 ```SQL
 INSERT INTO orders (customer_id, order_date, total_amount) VALUES
 (5, '2024-08-05', 150),
@@ -133,7 +133,7 @@ INSERT INTO orders (customer_id, order_date, total_amount) VALUES
 (30, '2024-11-05', 600);
 ```
 
-# creating a third table products
+### creating a third table products
 ```SQL
 CREATE TABLE products (
     id INT AUTO_INCREMENT,
@@ -144,7 +144,7 @@ CREATE TABLE products (
 );
 ```
 
-# INSERT a sample data to the products table 
+### INSERT a sample data to the products table 
 ```SQL
 INSERT INTO products (name, price, description) VALUES
 ('Product A', 49.99, 'High-quality product A with excellent features.'),
@@ -169,7 +169,9 @@ INSERT INTO products (name, price, description) VALUES
 ('Product T', 110.50, 'Well-rounded product T with balanced specs.');
 ```
 
-# Retrieve all customers who have placed an order in the last 30 days.
+# Queries to Write:
+
+### Retrieve all customers who have placed an order in the last 30 days.
 ```SQL
 SELECT 
     customers.id, 
@@ -186,7 +188,7 @@ WHERE
     orders.order_date BETWEEN '2024-10-06' AND '2024-11-05';
 ```
 
-# Get the total amount of all orders placed by each customer.
+### Get the total amount of all orders placed by each customer.
 ```SQL
 SELECT 
     customers.id,
@@ -200,21 +202,21 @@ GROUP BY
     customers.ID,customers.NAME;
 ```
 
-# Update the price of Product C to 45.00.
+### Update the price of Product C to 45.00.
 ```SQL
 UPDATE products SET PRICE = 45.00 WHERE name = 'Product C';
 ```
 
-# Add a new column discount to the products table.
+### Add a new column discount to the products table.
 ```SQL
 ALTER TABLE products ADD discount int;
 ```
 
-# Retrieve the top 3 products with the highest price.
+### Retrieve the top 3 products with the highest price.
 ```SQL
 SELECT * FROM products ORDER BY price DESC LIMIT 3;
 ```
-# Get the names of customers who have ordered Product A.
+### Get the names of customers who have ordered Product A.
 
 after Normalization
 ```SQL
@@ -232,7 +234,7 @@ WHERE
     products.name = 'Product A';
 ```
 
-# Join the orders and customers tables to retrieve the customers name and order date for each order. 
+### Join the orders and customers tables to retrieve the customers name and order date for each order. 
 ```SQL
 SELECT 
     customers.name,
@@ -242,7 +244,7 @@ FROM
 INNER JOIN
     orders ON customers.id = orders.customer_id;
 ```
-# Retrieve the orders with a total amount greater than 150.00.
+### Retrieve the orders with a total amount greater than 150.00.
 ```SQL
 SELECT * 
 FROM
@@ -250,7 +252,7 @@ FROM
 WHERE
     total_amount > 150.00;
 ```
-# Normalize the database by creating a separate table for order items and updating the orders table to reference the order_items table.
+### Normalize the database by creating a separate table for order items and updating the orders table to reference the order_items table.
 
 ```SQL
 CREATE TABLE order_items (
@@ -308,7 +310,7 @@ JOIN
 WHERE 
     orders.id = 1;
 ```
-# Retrieve the average total of all orders.
+### Retrieve the average total of all orders.
 
 after Normalization
 ```SQL
