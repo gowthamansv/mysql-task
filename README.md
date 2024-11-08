@@ -197,12 +197,12 @@ FROM
 INNER JOIN
     orders ON customers.ID = orders.customer_id
 GROUP BY
-    customers.ID,customers.NAME;
+    customers.id,customers.NAME;
 ```
 
 # Update the price of Product C to 45.00.
 ```SQL
-UPDATE products SET PRICE = 45.00 WHERE name = 'Product C';
+UPDATE products SET price = 45.00 WHERE name = 'Product C';
 ```
 
 # Add a new column discount to the products table.
@@ -225,7 +225,7 @@ FROM
 JOIN 
     orders ON customers.id = orders.customer_id
 JOIN 
-    order_items ON orders.ID = order_items.order_id
+    order_items ON orders.id = order_items.order_id
 JOIN 
     products ON order_items.product_id = products.id
 WHERE 
@@ -267,14 +267,14 @@ INSERTING data in te order_items table
 ```SQL
 INSERT INTO order_items (order_id, product_id, quantity, price)
 VALUES
-(1, (SELECT id FROM products WHERE NAME = 'Product A'), 2, 49.99),
-(1, (SELECT id FROM products WHERE NAME = 'Product B'), 1, 120.00),
-(2, (SELECT id FROM products WHERE NAME = 'Product D'), 2, 89.99),
-(2, (SELECT id FROM products WHERE NAME = 'Product F'), 1, 150.75),
-(2, (SELECT id FROM products WHERE NAME = 'Product S'), 2, 200.00),
-(3, (SELECT id FROM products WHERE NAME = 'Product T'), 1, 110.50),
-(3, (SELECT id FROM products WHERE NAME = 'Product A'), 2, 49.99),
-(3, (SELECT id FROM products WHERE NAME = 'Product M'), 1, 130.60),
+(1, (SELECT id FROM products WHERE name = 'Product A'), 2, 49.99),
+(1, (SELECT id FROM products WHERE name = 'Product B'), 1, 120.00),
+(2, (SELECT id FROM products WHERE name = 'Product D'), 2, 89.99),
+(2, (SELECT id FROM products WHERE name = 'Product F'), 1, 150.75),
+(2, (SELECT id FROM products WHERE name = 'Product S'), 2, 200.00),
+(3, (SELECT id FROM products WHERE name = 'Product T'), 1, 110.50),
+(3, (SELECT id FROM products WHERE name = 'Product A'), 2, 49.99),
+(3, (SELECT id FROM products WHERE name = 'Product M'), 1, 130.60),
 ;
 ```
 updating the orders table on two option one we can drop the total_amount column in orders table or update the total_amount of the order 
